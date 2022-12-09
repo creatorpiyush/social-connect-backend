@@ -14,10 +14,10 @@ route.get("/home/:username", async (req, res) => {
 
   // show posts from followed users
   await Users.findOne({ username: req.params.username }).then((user) => {
-    return Users.find({ _id: { $in: user?.following } }).then((users) => {
+    return Users.find({ _id: { $in: user.following } }).then((users) => {
       // find posts from followed users
       for (const user of users) {
-        return Posts.find({ _id: { $in: user?.posts } }).then((posts) => {
+        return Posts.find({ _id: { $in: user.posts } }).then((posts) => {
           allPosts = [...allPosts, ...posts];
         });
       }
@@ -26,7 +26,7 @@ route.get("/home/:username", async (req, res) => {
 
   // show posts from self
   await Users.findOne({ username: req.params.username }).then((user) => {
-    return Posts.find({ _id: { $in: user?.posts } }).then((posts) => {
+    return Posts.find({ _id: { $in: user.posts } }).then((posts) => {
       allPosts = [...allPosts, ...posts];
     });
   });
