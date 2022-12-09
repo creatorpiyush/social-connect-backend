@@ -13,15 +13,19 @@ route.get("/home/:username", async (req, res) => {
   let allPosts = [];
 
   // show posts from followed users
-  await Users.findOne({ username: req.params.username }).then((user) => {
-    return Users.find({ _id: { $in: user.following } }).then((users) => {
-      // find posts from followed users
-      for (const user of users) {
-        return Posts.find({ _id: { $in: user.posts } }).then((posts) => {
-          allPosts = [...allPosts, ...posts];
-        });
+  await Users.findOne({ username: req.params.username }).then(async (user) => {
+    return await Users.find({ _id: { $in: user.following } }).then(
+      async (users) => {
+        // find posts from followed users
+        for (const user of users) {
+          return await Posts.find({ _id: { $in: user.posts } }).then(
+            (posts) => {
+              allPosts = [...allPosts, ...posts];
+            }
+          );
+        }
       }
-    });
+    );
   });
 
   // show posts from self
