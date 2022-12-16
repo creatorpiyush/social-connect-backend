@@ -137,23 +137,23 @@ route.get("/username/:username", async (req, res) => {
 });
 
 // * update user by id route (PUT) /api/v1/users/update/:id
-route.put("/update/:id", async (req, res) => {
-  const { firstName, lastName, username, password, email } = req.body;
-  const user = await Users.findByIdAndUpdate(req.params.id, {
-    firstName,
-    lastName,
-    username,
-    password,
-    email,
-    updatedAt: Date.now(),
-  });
-  return res.status(200).json(user);
-});
+// route.put("/update/:id", async (req, res) => {
+//   const { firstName, lastName, username, password, email } = req.body;
+//   const user = await Users.findByIdAndUpdate(req.params.id, {
+//     firstName,
+//     lastName,
+//     username,
+//     password,
+//     email,
+//     updatedAt: Date.now(),
+//   });
+//   return res.status(200).json(user);
+// });
 
 // * delete user by id route (DELETE) /api/v1/users/delete/:id
-route.delete("/delete/:id", async (req, res) => {
-  const user = await Users.findByIdAndDelete(req.params.id);
-  return res.status(200).json(user);
-});
+// route.delete("/delete/:id", async (req, res) => {
+//   const user = await Users.findByIdAndDelete(req.params.id);
+//   return res.status(200).json(user);
+// });
 
 module.exports = route;

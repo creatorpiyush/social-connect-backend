@@ -12,40 +12,40 @@ route.get("/:username", async (req, res) => {
 });
 
 // * update user profile route (PUT) /api/v1/profile/update/:username
-route.put("/update/:username", async (req, res) => {
-  const { firstName, lastName, username, password, email } = req.body;
-  const user = await Users.findOneAndUpdate(
-    { username: req.params.username },
-    {
-      firstName,
-      lastName,
-      username,
-      password,
-      email,
-      updatedAt: Date.now(),
-    }
-  );
-  return res.status(200).json(user);
-});
+// route.put("/update/:username", async (req, res) => {
+//   const { firstName, lastName, username, password, email } = req.body;
+//   const user = await Users.findOneAndUpdate(
+//     { username: req.params.username },
+//     {
+//       firstName,
+//       lastName,
+//       username,
+//       password,
+//       email,
+//       updatedAt: Date.now(),
+//     }
+//   );
+//   return res.status(200).json(user);
+// });
 
 // * delete user profile route (DELETE) /api/v1/profile/delete/:username
-route.delete("/delete/:username", async (req, res) => {
-  const user = await Users.findOneAndDelete({ username: req.params.username });
-  return res.status(200).json(user);
-});
+// route.delete("/delete/:username", async (req, res) => {
+//   const user = await Users.findOneAndDelete({ username: req.params.username });
+//   return res.status(200).json(user);
+// });
 
 // * update user avatar route (PUT) /api/v1/profile/avatar/:username
-route.put("/avatar/:username", async (req, res) => {
-  const { avatar } = req.body;
-  const user = await Users.findOneAndUpdate(
-    { username: req.params.username },
-    {
-      avatar,
-      updatedAt: Date.now(),
-    }
-  );
-  return res.status(200).json(user);
-});
+// route.put("/avatar/:username", async (req, res) => {
+//   const { avatar } = req.body;
+//   const user = await Users.findOneAndUpdate(
+//     { username: req.params.username },
+//     {
+//       avatar,
+//       updatedAt: Date.now(),
+//     }
+//   );
+//   return res.status(200).json(user);
+// });
 
 // follow user route (PUT) /api/v1/profile/follow/:username/:followedUser
 route.put("/follow/:username/:followedUser", async (req, res) => {

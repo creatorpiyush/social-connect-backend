@@ -124,34 +124,34 @@ route.put("/unlike/:id", async (req, res) => {
 });
 
 // * comment post route (PUT) /api/v1/posts/comment/:id
-route.put("/comment/:id", async (req, res) => {
-  const { username, commentText } = req.body;
-  const post = await Users.findOneAndUpdate(
-    { _id: req.params.id },
-    {
-      $push: { comments: { username, commentText, commentDate: Date.now() } },
-    }
-  );
-  return res.status(200).json(post);
-});
+// route.put("/comment/:id", async (req, res) => {
+//   const { username, commentText } = req.body;
+//   const post = await Users.findOneAndUpdate(
+//     { _id: req.params.id },
+//     {
+//       $push: { comments: { username, commentText, commentDate: Date.now() } },
+//     }
+//   );
+//   return res.status(200).json(post);
+// });
 
 // * delete comment route (PUT) /api/v1/posts/delete-comment/:id
-route.put("/delete-comment/:id", async (req, res) => {
-  const { username, commentText } = req.body;
-  const post = await Users.findOneAndUpdate(
-    { _id: req.params.id },
-    {
-      $pull: { comments: { username, commentText } },
-    }
-  );
-  return res.status(200).json(post);
-});
+// route.put("/delete-comment/:id", async (req, res) => {
+//   const { username, commentText } = req.body;
+//   const post = await Users.findOneAndUpdate(
+//     { _id: req.params.id },
+//     {
+//       $pull: { comments: { username, commentText } },
+//     }
+//   );
+//   return res.status(200).json(post);
+// });
 
 // * delete post route (DELETE) /api/v1/posts/delete/:id
-route.delete("/delete/:id", async (req, res) => {
-  const post = await Users.findOneAndDelete({ _id: req.params.id });
-  return res.status(200).json(post);
-});
+// route.delete("/delete/:id", async (req, res) => {
+//   const post = await Users.findOneAndDelete({ _id: req.params.id });
+//   return res.status(200).json(post);
+// });
 
 // * get all liked posts route (GET) /api/v1/posts/liked/:username
 route.get("/liked/:username", async (req, res) => {
